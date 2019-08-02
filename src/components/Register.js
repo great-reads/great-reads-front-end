@@ -7,11 +7,12 @@ function Register() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const baseURL = 'http://localhost:5000/';
+    const baseURL = 'http://localhost:5000';
     axios
-      .post(`${baseURL}/auth/register`, { email, password })
+      .post(`${baseURL}/auth/register`, { username: email, password })
       .then(res => {
         console.log(res);
+        localStorage.setItem('token', res.data.token);
       })
       .catch(err => {
         console.log(err);
@@ -19,7 +20,8 @@ function Register() {
   };
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
+      <p>Register</p>
       <input
         value={email}
         name="email"
@@ -34,7 +36,7 @@ function Register() {
         onChange={e => setPassword(e.target.value)}
         placeholder="password"
       />
-      <button>Submit</button>
+      <button type="submit">Submit</button>
     </form>
   );
 }

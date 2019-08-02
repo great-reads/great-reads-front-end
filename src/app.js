@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import booklover from './images/undraw_book_lover_mkck.svg';
 
 import Register from './components/Register';
+import Login from './components/Login';
 
 const App = () => {
   return (
@@ -10,6 +11,7 @@ const App = () => {
       <div>
         <img src={booklover} alt="" />
         <Register />
+        <Login />
       </div>
     </React.StrictMode>
   );
