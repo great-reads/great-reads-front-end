@@ -1,20 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import booklover from './images/undraw_book_lover_mkck.svg';
-
+import Header from './components/Header';
 import Register from './components/Register';
 import Login from './components/Login';
+import LandingPage from './components/LandingPage';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 const App = () => {
   return (
     <React.StrictMode>
-      <div>
-        <img src={booklover} alt="" />
-        <Register />
-        <Login />
-      </div>
+      <>
+        <Header />
+        <Route exact path="/" component={LandingPage} />
+        <Route path="/login" component={Login} />
+        <Route path="/signup" component={Register} />
+      </>
     </React.StrictMode>
   );
 };
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <Router>
+    <App />
+  </Router>,
+  document.getElementById('root'),
+);
